@@ -20,7 +20,7 @@ feature 'Adds inventory item' do
     fill_in 'Title', with: item.title
     fill_in 'Description', with: item.description
     fill_in 'Quantity', with: item.quantity
-    click_on 'Submit'
+    click_on 'Create Inventory'
 
     expect(Inventory.all.count).to eq 1
     expect(page).to have_content 'Inventory successfully submitted.'
@@ -28,7 +28,7 @@ feature 'Adds inventory item' do
 
   it 'prompts user to fix errors if enters invalid item' do
     visit '/inventories/new'
-    click_on 'Submit'
+    click_on 'Create Inventory'
 
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Description can't be blank"
